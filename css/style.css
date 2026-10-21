@@ -1,0 +1,916 @@
+/* =====================================================================
+   style.css - Styles for the AKTU Web Development Lab portfolio
+
+   Sections:
+     1. Colour and design variables (change the look here)
+     2. Base / reset styles
+     3. Page layout
+     4. Profile sidebar
+     5. Tab bar
+     6. Shared components (cards, buttons, tags)
+     7. About, Resume, Projects, Achievements, Contact sections
+     8. Responsive rules (tablet and desktop)
+   The CSS is written mobile-first: the default rules are for phones, and
+   the media queries at the bottom add changes for larger screens.
+   ===================================================================== */
+
+
+/* ---------- 1. COLOUR AND DESIGN VARIABLES ----------
+   Change a value here and it updates everywhere it is used. */
+:root {
+  /* Palette: blue-grey with a pale cream-blue for text and accents */
+
+  /* Backgrounds */
+  --bg: #27374D;               /* page background (deepest navy) */
+  --surface: #526D82;          /* cards and sidebar */
+  --surface-raised: #526D82;   /* avatar, skill-bar track, hover areas */
+  --border: #526D82;           /* quiet dividers and card outlines */
+  --border-strong: #27374D;    /* borders of form fields (needs 3:1 contrast to be easy to see) */
+
+  /* Text */
+  --text: #DDE6ED;             /* cream */
+  --text-muted: #DDE6ED;       /* softer cream-grey for secondary text */
+
+  /* Main accent: cream */
+  --accent: #DDE6ED;
+  --accent-hover: #DDE6ED;
+  --accent-ink: #27374D;       /* dark text used ON the accent colour (buttons) */
+  --accent-soft: rgba(221, 230, 237, 0.12);   /* if you change --accent, change these numbers too */
+
+  /* Error colour for form validation (the only colour outside the palette) */
+  --danger: #ff9f97;
+
+  /* Brand colours for the sidebar logos. They only appear when you hover over or focus a link. */
+  --brand-github: #181717;
+  --brand-linkedin: #0a66c2;
+  --brand-instagram: #e1306c;
+  --brand-leetcode: #ffa116;
+
+  /* Shape and spacing */
+  --radius: 12px;
+  --radius-sm: 8px;
+
+  /* Fonts: system fonts only, so the site works offline */
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-heading: "Iowan Old Style", Charter, Georgia, "Times New Roman", serif;
+}
+
+
+/* ---------- 2. BASE / RESET ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;      /* padding and border are included in an element's width */
+}
+
+/* The "hidden" attribute must always win, even over rules like display:flex.
+   JavaScript uses it to show and hide panels and project cards. */
+[hidden] {
+  display: none !important;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, p, ul, ol {
+  margin: 0;
+}
+
+ul, ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: var(--accent);
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+code {
+  background: var(--surface-raised);
+  border-radius: 4px;
+  padding: 0.1em 0.4em;
+  font-size: 0.9em;
+}
+
+/* A clear outline for keyboard users on every interactive element */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Lets keyboard users skip the sidebar. Hidden until it receives focus. */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 20;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.noscript-note {
+  margin: 0;
+  padding: 0.75rem 1rem;
+  background: var(--surface-raised);
+  text-align: center;
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+.small {
+  font-size: 0.875rem;
+}
+
+
+/* ---------- 3. PAGE LAYOUT ---------- */
+.page {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: grid;           /* phones: one column (sidebar on top, content below) */
+  gap: 1rem;
+}
+
+.content {
+  min-width: 0;            /* stops wide children from forcing sideways scrolling */
+}
+
+.site-footer {
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+
+/* ---------- 4. PROFILE SIDEBAR ---------- */
+.sidebar {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  object-fit: cover;           /* crops the photo to fill the square instead of stretching it */
+  display: grid;
+  place-items: center;
+  background: var(--surface-raised);
+  border: 0;                   /* no outline around the photo */
+  border-radius: var(--radius);   /* keeps the rounded corners */
+  color: var(--accent);
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+}
+
+.name {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.role {
+  margin-top: 0.25rem;
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+}
+
+/* The toggle button is only used on small screens (hidden on desktop below) */
+.sidebar-toggle {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+/* ".sidebar .sidebar-toggle" is more specific than ".btn-secondary" (defined later), so this border colour wins */
+.sidebar .sidebar-toggle {
+  border-color: var(--text);
+}
+
+/* On small screens the details start closed. JavaScript adds .is-open to show them. */
+.sidebar-details {
+  display: none;
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--text);
+}
+
+.sidebar-details.is-open {
+  display: block;
+}
+
+.intro {
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+}
+
+.contact-list {
+  margin-top: 1.25rem;
+  display: grid;
+  gap: 0.75rem;
+  font-size: 0.9375rem;
+}
+
+.contact-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  overflow-wrap: anywhere;   /* very long emails wrap instead of overflowing */
+}
+
+.contact-list .icon {
+  color: var(--text-muted);
+}
+
+.social-list {
+  margin: 1.25rem 0;
+  display: flex;
+  flex-direction: column;    /* one link per row, stacked */
+  gap: 0.5rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 44px;
+  padding: 0 1rem;
+  border: 1px solid var(--text);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 0.9375rem;
+  text-decoration: none;
+  transition: background-color 0.15s;
+}
+
+.social-link:hover {
+  background: var(--accent-soft);
+}
+
+/* The logo sits on a small rounded "chip". At rest the chip is invisible and the logo
+   has the normal text colour. On hover or keyboard focus, the logo takes its brand
+   colour and the chip fills in, so the colour always has enough contrast behind it. */
+.social-link .icon {
+  box-sizing: content-box;     /* the 5px padding makes the chip bigger than the 18px logo */
+  padding: 5px;
+  margin: -5px 0 -5px -5px;    /* cancels the padding so the logo stays where it was */
+  border-radius: 8px;
+  background: transparent;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.social-link:hover .icon,
+.social-link:focus-visible .icon {
+  color: var(--brand);
+  background: var(--chip);
+}
+
+/* Which brand colour and which chip colour each link uses.
+   LeetCode orange is too light for a cream chip, so it gets a dark one. */
+.social-github    { --brand: var(--brand-github);    --chip: var(--text); }
+.social-linkedin  { --brand: var(--brand-linkedin);  --chip: var(--text); }
+.social-instagram { --brand: var(--brand-instagram); --chip: var(--text); }
+.social-leetcode  { --brand: var(--brand-leetcode);  --chip: var(--bg); }
+
+
+/* ---------- 5. TAB BAR ---------- */
+/* The tab bar stays at the top of the screen while you scroll.
+   On very narrow phones it scrolls sideways inside itself, never the whole page. */
+.tabs {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  gap: 0.25rem;
+  padding-top: 0.25rem;
+  overflow-x: auto;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  scrollbar-width: thin;
+}
+
+.tab-btn {
+  flex: 0 0 auto;          /* buttons keep their size instead of squashing */
+  min-height: 48px;
+  padding: 0 1rem;
+  background: none;
+  border: 0;
+  border-bottom: 3px solid transparent;
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  color: var(--text-muted);
+  font: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.tab-btn:hover {
+  color: var(--text);
+}
+
+.tab-btn:focus-visible {
+  outline-offset: -3px;    /* keep the outline inside the scrolling bar so it is not clipped */
+}
+
+/* The active tab has a filled background, accent colour AND an underline,
+   so it never relies on colour alone. */
+.tab-btn.is-active {
+  background: var(--surface);
+  border-bottom-color: var(--accent);
+  color: var(--accent);
+}
+
+
+/* ---------- 6. SHARED COMPONENTS ---------- */
+
+/* Panels (the five sections) */
+.panel {
+  padding-top: 1.5rem;
+  scroll-margin-top: 4rem;   /* leaves room for the sticky tab bar when scrolled into view */
+}
+
+/* A short fade when a panel appears (switched off for people who prefer reduced motion) */
+.panel:not([hidden]) {
+  animation: fade-in 0.2s ease;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.panel h2 {
+  margin-bottom: 1rem;
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  line-height: 1.25;
+}
+
+.panel h3 {
+  margin: 2rem 0 0.75rem;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+
+.panel h2 + h3 {
+  margin-top: 1.5rem;
+}
+
+.panel h4 {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.prose p + p {
+  margin-top: 0.75rem;
+}
+
+.prose {
+  max-width: 65ch;           /* keeps lines a comfortable reading length */
+}
+
+/* Icons: inline SVGs drawn with the current text colour */
+.icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* The LeetCode logo is a solid shape, so it is filled instead of outlined */
+.icon-filled {
+  fill: currentColor;
+  stroke: none;
+}
+
+.icon-lg {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 0.75rem;
+  color: var(--accent);
+}
+
+/* Cards: one style used for every card on the site */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+}
+
+.card > .icon-lg + h4 {
+  margin-bottom: 0.25rem;
+}
+
+.card p {
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+/* Grids. "auto-fit / auto-fill + minmax" means: fit as many columns as there
+   is room for, with each at least the given width. No media query needed. */
+.card-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.card-grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.card-grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.card-grid-projects {
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 1.25rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.btn-primary:hover {
+  background: var(--accent-hover);
+}
+
+.btn-secondary {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* Small pills */
+.chip-list,
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  padding: 0.35rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.9375rem;
+}
+
+.tag {
+  padding: 0.15rem 0.65rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+
+/* ---------- 7. SECTION-SPECIFIC STYLES ---------- */
+
+/* ----- Resume: education timeline ----- */
+.timeline {
+  margin-left: 0.4rem;
+  padding-left: 1.25rem;
+  border-left: 2px solid var(--border);
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 1.5rem;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+/* The dot on the line */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: calc(-1.25rem - 7px);
+  top: 0.4rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--bg);
+}
+
+.timeline-meta {
+  margin-top: 0.25rem;
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+}
+
+.timeline-date {
+  margin-top: 0.25rem;
+  color: var(--accent);
+  font-size: 0.875rem;
+}
+
+.timeline-score {
+  margin-top: 0.25rem;
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+}
+
+.timeline-score strong {
+  color: var(--text);
+}
+
+/* Space between the timeline and the skills/goals cards below it */
+.timeline + .card-grid-2 {
+  margin-top: 2rem;
+}
+
+/* ----- Resume: self-assessed skills ----- */
+.skill-list {
+  margin-top: 1rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.skill-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+  font-size: 0.9375rem;
+}
+
+.skill-level {
+  color: var(--text-muted);
+}
+
+.skill-bar {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--bg);       /* dark track, so the unfilled part of the bar is visible on the card */
+  overflow: hidden;
+}
+
+.skill-bar::after {
+  content: "";
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+/* Four steps only, so the bars cannot suggest a precise, "verified" percentage */
+.skill-bar[data-level="1"]::after { width: 25%; }
+.skill-bar[data-level="2"]::after { width: 50%; }
+.skill-bar[data-level="3"]::after { width: 75%; }
+.skill-bar[data-level="4"]::after { width: 100%; }
+
+.check-list {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.check-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+}
+
+.check-list li::before {
+  content: "";
+  position: absolute;
+  left: 0.2rem;
+  top: 0.55em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+/* ----- Projects ----- */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 0.75rem;
+}
+
+.filter-btn {
+  min-height: 44px;
+  padding: 0 1.1rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Active filter: filled background (not colour alone) */
+.filter-btn.is-active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+
+#project-status {
+  margin-bottom: 1rem;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: border-color 0.15s;
+}
+
+.project-card:hover {
+  border-color: var(--accent);
+}
+
+.project-links {
+  margin-top: auto;          /* pushes the links to the bottom of the card */
+  padding-top: 0.75rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Links look like the sidebar link boxes, and are at least 44px tall so they are easy to tap */
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 1rem;
+  border: 1px solid var(--text);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-size: 0.9375rem;
+  text-decoration: none;
+  transition: background-color 0.15s;
+}
+
+.project-link:hover {
+  background: var(--accent-soft);
+}
+
+/* ----- Achievements ----- */
+.entry-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* Certificate thumbnail: a clickable box that opens the full-size image in a new tab */
+.cert-link {
+  display: block;
+  margin-bottom: 0.75rem;
+  border: 1px solid var(--text);
+  border-radius: var(--radius-sm);
+  overflow: hidden;           /* keeps the image inside the rounded corners */
+  background: var(--bg);
+}
+
+.cert-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 10;      /* every thumbnail gets the same shape, so the cards line up */
+  object-fit: contain;        /* shows the WHOLE certificate (nothing is cropped) */
+  transition: opacity 0.15s;
+}
+
+.cert-link:hover .cert-img {
+  opacity: 0.85;
+}
+
+/* ".card .entry-title" is needed so it beats the muted ".card p" rule above */
+.card .entry-title {
+  color: var(--text);
+  font-weight: 600;           /* bolder than the details line, so the title stands out */
+}
+
+.entry-meta {
+  margin-top: 0.1rem;
+}
+
+/* ----- Contact form ----- */
+.form {
+  max-width: 640px;
+}
+
+.field {
+  margin-bottom: 1.25rem;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+
+.field input,
+.field textarea {
+  display: block;
+  width: 100%;               /* never wider than the card, on any screen */
+  padding: 0.7rem 0.85rem;
+  background: var(--bg);
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font: inherit;              /* 16px text also stops iPhones zooming in on focus */
+}
+
+.field textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: var(--accent);
+}
+
+.field input.is-invalid,
+.field textarea.is-invalid {
+  border-color: var(--danger);
+}
+
+/* The form is also a ".card", and ".card p" makes paragraphs grey.
+   Starting these selectors with ".form" makes them more specific so they win. */
+.form .field-error {
+  margin-top: 0.4rem;
+  color: var(--danger);
+  font-size: 0.875rem;
+}
+
+.form .field-error:empty {
+  display: none;
+}
+
+.form .form-status {
+  margin-bottom: 1.25rem;
+  color: var(--text);
+  font-size: 0.9375rem;
+}
+
+/* Empty at first; JavaScript fills it and adds one of these two classes */
+.form .form-status.is-success,
+.form .form-status.is-error {
+  padding: 0.75rem 1rem;
+  border: 1px solid;
+  border-radius: var(--radius-sm);
+}
+
+.form .form-status.is-success {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.form .form-status.is-error {
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+
+/* ---------- 8. RESPONSIVE RULES ---------- */
+
+/* Bigger phones and small tablets */
+@media (min-width: 640px) {
+  .page {
+    padding: 1.5rem;
+  }
+
+  .panel h2 {
+    font-size: 2rem;
+  }
+}
+
+/* Laptops and desktops: sidebar beside the content */
+@media (min-width: 1024px) {
+  .page {
+    grid-template-columns: 300px minmax(0, 1fr);   /* fixed sidebar + flexible content */
+    gap: 1.5rem;
+    padding: 2rem 1.5rem;
+    align-items: start;
+  }
+
+  .sidebar {
+    padding: 1.5rem;
+  }
+
+  .sidebar-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .avatar {
+    width: 112px;
+    height: 112px;
+    font-size: 2.25rem;
+  }
+
+  /* No toggle needed: the details are always visible */
+  .sidebar-toggle {
+    display: none;
+  }
+
+  .sidebar-details {
+    display: block;
+    margin-top: 1.25rem;
+  }
+}
+
+/* Keep the sidebar in view while scrolling, but only if the screen is tall enough to fit it */
+@media (min-width: 1024px) and (min-height: 760px) {
+  .sidebar {
+    position: sticky;
+    top: 2rem;
+  }
+}
+
+/* Respect the "reduce motion" setting in the visitor's system */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

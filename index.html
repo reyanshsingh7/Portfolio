@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Personal portfolio of a B.Tech CSIT student, built as a Web Development Lab project for AKTU.">
+  <title>Reyansh Singh | B.Tech CSIT Portfolio</title>
+  <!-- An empty icon stops the browser from asking for a favicon file we don't have -->
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Lets keyboard users jump past the sidebar straight to the content -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <noscript>
+    <p class="noscript-note">JavaScript is turned off, so the tabs, project filters and form checks will not work. Please enable JavaScript.</p>
+  </noscript>
+
+  <div class="page">
+
+    <!-- =====================================================
+         PROFILE SIDEBAR
+         On desktop it sits beside the content. On phones and
+         tablets it becomes a compact card, and the details
+         open and close with the toggle button.
+         ===================================================== -->
+    <aside class="sidebar" aria-label="Profile">
+
+      <div class="sidebar-header">
+        <!-- Profile photo: images/profile.jpg -->
+        <img class="avatar" src="images/profile.jpg" width="112" height="112" alt="Photo of Reyansh Singh">
+        <div class="identity">
+          <h1 class="name">Reyansh Singh</h1>
+          <p class="role">B.Tech CSIT Student</p>
+        </div>
+      </div>
+
+      <button type="button" id="sidebar-toggle" class="btn btn-secondary sidebar-toggle"
+              aria-expanded="false" aria-controls="sidebar-details">Show contact details</button>
+
+      <div id="sidebar-details" class="sidebar-details">
+        <p class="intro">
+          I'm learning to build websites with HTML, CSS and JavaScript, and I like turning small ideas into working projects.
+        </p>
+
+        <ul class="contact-list">
+          <li>
+            <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <a href="mailto:1510.reyanshsingh@gmail.com">1510.reyanshsingh<wbr>@gmail.com</a>
+          </li>
+          <li>
+            <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Indirapuram, Ghaziabad, Uttar Pradesh</span>
+          </li>
+        </ul>
+
+        <ul class="social-list">
+          <li>
+            <a class="social-link social-github" href="https://github.com/reyanshsingh7" target="_blank" rel="noopener noreferrer">
+              <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              <span>GitHub</span>
+            </a>
+          </li>
+          <li>
+            <a class="social-link social-linkedin" href="https://www.linkedin.com/in/reyansh-singh-9760b6354/" target="_blank" rel="noopener noreferrer">
+              <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              <span>LinkedIn</span>
+            </a>
+          </li>
+          <li>
+            <a class="social-link social-instagram" href="https://instagram.com/reyansh.s_07?obrf=MTU3dWVoemJzdmExdw%3D%3D" target="_blank" rel="noopener noreferrer">
+              <svg class="icon" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              <span>Instagram</span>
+            </a>
+          </li>
+          <li>
+            <a class="social-link social-leetcode" href="https://leetcode.com/u/Reyansh_S/" target="_blank" rel="noopener noreferrer">
+              <svg class="icon icon-filled" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>
+              <span>LeetCode</span>
+            </a>
+          </li>
+        </ul>
+
+        <button type="button" id="contact-me-btn" class="btn btn-primary btn-block">Contact me</button>
+      </div>
+    </aside>
+
+    <!-- =====================================================
+         MAIN CONTENT: tab bar + five sections
+         Only one .panel is visible at a time (the others have
+         the "hidden" attribute, which also removes them from
+         keyboard tabbing and screen readers).
+         ===================================================== -->
+    <main class="content" id="main-content">
+
+      <nav class="tabs" aria-label="Portfolio sections">
+        <!-- data-tab must match the id of the panel it opens -->
+        <button type="button" class="tab-btn is-active" data-tab="about" aria-controls="about" aria-current="page">About</button>
+        <button type="button" class="tab-btn" data-tab="resume" aria-controls="resume">Resume</button>
+        <button type="button" class="tab-btn" data-tab="projects" aria-controls="projects">Projects</button>
+        <button type="button" class="tab-btn" data-tab="achievements" aria-controls="achievements">Achievements</button>
+        <button type="button" class="tab-btn" data-tab="contact" aria-controls="contact">Contact</button>
+      </nav>
+
+      <!-- ================= ABOUT ================= -->
+      <section id="about" class="panel" aria-labelledby="about-title">
+        <h2 id="about-title">About me</h2>
+
+        <div class="prose">
+          <p>
+            I'm a B.Tech student in Computer Science and Information Technology (CSIT). I like understanding how things work, and web development is where I'm putting that curiosity into practice. This portfolio is my Web Development Lab project, built with plain HTML, CSS and JavaScript.
+          </p>
+        </div>
+
+        <h3>Career objective</h3>
+        <div class="prose">
+          <p>
+            To grow into a capable software developer by building a strong base in programming and web technologies, learning through small hands-on projects, and steadily taking on bigger ones.
+          </p>
+        </div>
+
+        <h3>Areas of interest</h3>
+        <ul class="chip-list">
+          <li class="chip">Artificial Intelligence</li>
+          <li class="chip">Programming</li>
+          <li class="chip">Problem solving</li>
+          <li class="chip">Cybersecurity</li>
+        </ul>
+
+        <h3>What I'm working on</h3>
+        <div class="card-grid card-grid-3">
+          <article class="card">
+            <svg class="icon icon-lg" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            <h4>Web Development</h4>
+            <p>Building structured, responsive pages with HTML, CSS and JavaScript.</p>
+          </article>
+          <article class="card">
+            <svg class="icon icon-lg" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+            <h4>Programming Fundamentals</h4>
+            <p>Practising logic, loops, functions and basic data handling.</p>
+          </article>
+          <article class="card">
+            <svg class="icon icon-lg" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            <h4>Problem Solving</h4>
+            <p>Breaking a problem into small steps and testing each step before moving on.</p>
+          </article>
+        </div>
+
+        <h3>Hobbies</h3>
+        <div class="card-grid card-grid-2">
+          <article class="card">
+            <h4>Listening to music</h4>
+            <p>Music helps me focus while coding and relax afterwards.</p>
+          </article>
+          <article class="card">
+            <h4>Playing games</h4>
+            <p>Playing with friends keeps me active and teaches teamwork.</p>
+          </article>
+          <article class="card">
+            <h4>Reading</h4>
+            <p>Mostly tech articles, plus the occasional books for a break.</p>
+          </article>
+          <article class="card">
+            <h4>Trying new tools</h4>
+            <p>I like exploring new apps, editors and websites to see how they work.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ================= RESUME ================= -->
+      <section id="resume" class="panel" aria-labelledby="resume-title" hidden>
+        <h2 id="resume-title">Resume</h2>
+
+        <h3>Education</h3>
+        <!-- A timeline makes sense here because education really is a sequence (newest first) -->
+        <ol class="timeline">
+          <li class="timeline-item">
+            <h4>B.Tech, Computer Science and Information Technology (CSIT)</h4>
+            <p class="timeline-meta"> G.L.Bajaj Institute of Technology and Management, affiliated to Dr. A.P.J. Abdul Kalam Technical University (AKTU), Lucknow</p>
+            <p class="timeline-date"> 2025 to 2029</p>
+          </li>
+          <li class="timeline-item">
+            <h4>Intermediate (Class XII)</h4>
+            <p class="timeline-meta"> Cambridge School Indirapuram, C.B.S.E.</p>
+            <p class="timeline-date"> 2025</p>
+            <p class="timeline-score">Percentage: <strong>78.4%</strong></p>
+          </li>
+          <li class="timeline-item">
+            <h4>High School (Class X)</h4>
+            <p class="timeline-meta"> Cambridge School Indirapuram, C.B.S.E.</p>
+            <p class="timeline-date"> 2023</p>
+            <p class="timeline-score">Percentage: <strong>92.2%</strong></p>
+          </li>
+        </ol>
+
+        <div class="card-grid card-grid-2">
+
+          <section class="card" aria-labelledby="skills-title">
+            <h3 id="skills-title">Skills</h3>
+            <p class="muted small">Self-assessed levels while I'm learning. Not test scores or certifications.</p>
+            <ul class="skill-list">
+              <li class="skill">
+                <div class="skill-top"><span>C</span><span class="skill-level">Learning</span></div>
+                <div class="skill-bar" data-level="2" aria-hidden="true"></div>
+              </li>
+              <li class="skill">
+                <div class="skill-top"><span>Python</span><span class="skill-level">Learning</span></div>
+                <div class="skill-bar" data-level="2" aria-hidden="true"></div>
+              </li>
+              <li class="skill">
+                <div class="skill-top"><span>HTML</span><span class="skill-level">Learning</span></div>
+                <div class="skill-bar" data-level="2" aria-hidden="true"></div>
+              </li>
+              <li class="skill">
+                <div class="skill-top"><span>CSS</span><span class="skill-level">Learning</span></div>
+                <div class="skill-bar" data-level="2" aria-hidden="true"></div>
+              </li>
+              <li class="skill">
+                <div class="skill-top"><span>JavaScript</span><span class="skill-level">Learning</span></div>
+                <div class="skill-bar" data-level="2" aria-hidden="true"></div>
+              </li>
+            </ul>
+          </section>
+
+          <section class="card" aria-labelledby="goals-title">
+            <h3 id="goals-title">Currently learning</h3>
+            <ul class="check-list">
+              <li>Responsive Frontend layouts</li>
+              <li>Problem solving and program logic in C and Python</li>
+              <li>Git and GitHub basics</li>
+              <li>Project Management</li>
+              <li>Database Fundamentals</li>
+            </ul>
+          </section>
+
+        </div>
+      </section>
+
+      <!-- ================= PROJECTS ================= -->
+      <section id="projects" class="panel" aria-labelledby="projects-title" hidden>
+        <h2 id="projects-title">Projects</h2>
+
+        <!-- Filter buttons. data-filter must match a word in a card's data-category -->
+        <div class="filters" role="group" aria-label="Filter projects by category">
+          <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="filter-btn" data-filter="frontend" aria-pressed="false">Frontend</button>
+          <button type="button" class="filter-btn" data-filter="backend" aria-pressed="false">Backend</button>
+          <button type="button" class="filter-btn" data-filter="database-security" aria-pressed="false">Database &amp; Security</button>
+        </div>
+        <p id="project-status" class="muted small" role="status">Showing 4 of 4 projects</p>
+
+        <div class="card-grid card-grid-projects">
+
+          <!-- A card can belong to several categories: separate them with spaces.
+               Each category must be ONE word (use a hyphen, like database-security), never spaces. -->
+          <article class="card project-card" data-category="frontend">
+            <h4>Personal Portfolio Website</h4>
+            <p>A single-page portfolio with tabs, a project filter and a validated contact form.</p>
+            <ul class="tag-list">
+              <li class="tag">HTML</li>
+              <li class="tag">CSS</li>
+              <li class="tag">JavaScript</li>
+            </ul>
+            <div class="project-links">
+              <a class="project-link" href="https://github.com/reyanshsingh7/Portfolio" target="_blank" rel="noopener noreferrer" aria-label="Personal Portfolio Website: GitHub repository (opens in a new tab)">GitHub</a>
+            </div>
+          </article>
+
+          <article class="card project-card" data-category="frontend">
+            <h4>Online Bookstore Website</h4>
+            <p>A multi-page website for an online bookstore with a shopping cart and user login and registration features.</p>
+            <ul class="tag-list">
+              <li class="tag">HTML</li>
+              <li class="tag">CSS</li>
+              <li class="tag">JavaScript</li>
+            </ul>
+            <div class="project-links">
+              <a class="project-link" href="https://github.com/reyanshsingh7/Bookstore" target="_blank" rel="noopener noreferrer" aria-label="Online Bookstore Website: GitHub repository (opens in a new tab)">GitHub</a>
+            </div>
+          </article>
+
+          <article class="card project-card" data-category="database-security">
+            <h4>QR Trust</h4>
+            <p>[Short description of this project: what it does and what you learned.]</p>
+            <ul class="tag-list">
+              <li class="tag">Node.js</li>
+            </ul>
+            <div class="project-links">
+              <a class="project-link" href="https://github.com/reyanshsingh7/QR-Trust" target="_blank" rel="noopener noreferrer" aria-label="QR Trust: GitHub repository (opens in a new tab)">GitHub</a>
+            </div>
+          </article>
+
+          <article class="card project-card" data-category="backend">
+            <h4>AgriTwin</h4>
+            <p>[Short description of this project: what it does and what you learned.]</p>
+            <ul class="tag-list">
+              <li class="tag">Python</li>
+            </ul>
+            <div class="project-links">
+              <a class="project-link" href="https://github.com/reyanshsingh7/AgriTwin" target="_blank" rel="noopener noreferrer" aria-label="AgriTwin: GitHub repository (opens in a new tab)">GitHub</a>
+            </div>
+          </article>
+
+        </div>
+
+        <p id="project-empty" class="muted" hidden>No projects in this category yet.</p>
+      </section>
+
+      <!-- ================= ACHIEVEMENTS ================= -->
+      <section id="achievements" class="panel" aria-labelledby="achievements-title" hidden>
+        <h2 id="achievements-title">Achievements</h2>
+        <div class="card-grid card-grid-2">
+
+          <section class="card" aria-labelledby="cert-title">
+            <h3 id="cert-title">Certifications</h3>
+            <ul class="entry-list">
+              <li class="entry">
+                <a class="cert-link" href="images/certificates/certificate.jpg" target="_blank" rel="noopener noreferrer">
+                  <img class="cert-img" src="images/certificates/certificate.jpg" width="1168" height="901" alt="Certificate: Prompt Engineering, Vanderbilt University on Coursera">
+                </a>
+                <p class="entry-title">Prompt Engineering</p>
+                <p class="entry-meta">Vanderbilt University (Coursera), 2026</p>
+              </li>
+            </ul>
+          </section>
+
+           <section class="card" aria-labelledby="hack-title">
+            <h3 id="hack-title">Hackathons</h3>
+            <ul class="entry-list">
+              <li class="entry">
+                <a class="cert-link" href="images/certificates/build-with-bharat-certificate.jpg" target="_blank" rel="noopener noreferrer">
+                  <img class="cert-img" src="images/certificates/build-with-bharat-certificate.jpg" width="1600" height="1131" alt="Certificate: Build with Bharat 4.0 hackathon">
+                </a>
+                <p class="entry-title">Build with Bharat 4.0</p>
+                <p class="entry-meta">Security &amp; Database Developer, 2026</p>
+              </li>
+            </ul>
+          </section>
+
+          <section class="card" aria-labelledby="hack-title">
+            <h3 id="hack-title">Hackathons</h3>
+            <ul class="entry-list">
+              <li class="entry">
+                <a class="cert-link" href="images/certificates/placeholder.svg" target="_blank" rel="noopener noreferrer">
+                  <img class="cert-img" src="images/certificates/placeholder.svg" width="1600" height="1131" alt="Certificate: Build with Bharat 4.0 hackathon">
+                </a>
+                <p class="entry-title">AI for Agrofoods</p>
+                <p class="entry-meta">Technical Project Lead, 2026</p>
+              </li>
+            </ul>
+          </section>
+
+         
+
+        </div>
+      </section>
+
+      <!-- ================= CONTACT ================= -->
+      <section id="contact" class="panel" aria-labelledby="contact-title" hidden>
+        <h2 id="contact-title">Contact</h2>
+
+        <!-- "novalidate" turns off the browser's own pop-up messages so our JavaScript can show its own.
+             The rules still come from the HTML attributes: required, type="email" and minlength. -->
+        <form id="contact-form" class="card form" novalidate>
+
+          <div class="field">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required minlength="2" autocomplete="name"
+                   data-label="name" aria-describedby="name-error">
+            <p class="field-error" id="name-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required autocomplete="email"
+                   data-label="email address" aria-describedby="email-error">
+            <p class="field-error" id="email-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" name="subject" required minlength="3"
+                   data-label="subject" aria-describedby="subject-error">
+            <p class="field-error" id="subject-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required minlength="10"
+                      data-label="message" aria-describedby="message-error"></textarea>
+            <p class="field-error" id="message-error"></p>
+          </div>
+
+          <!-- Empty until the form is submitted. role="status" lets screen readers announce it. -->
+          <p id="form-status" class="form-status" role="status"></p>
+
+          <button type="submit" class="btn btn-primary">Submit form</button>
+        </form>
+      </section>
+
+      <footer class="site-footer">
+        <p>Made by Reyansh Singh</p>
+      </footer>
+    </main>
+
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
