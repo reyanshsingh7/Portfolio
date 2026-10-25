@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Personal portfolio of a B.Tech CSIT student, built as a Web Development Lab project for AKTU.">
   <title>Reyansh Singh | B.Tech CSIT Portfolio</title>
-  <!-- An empty icon stops the browser from asking for a favicon file we don't have -->
+  
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- Lets keyboard users jump past the sidebar straight to the content -->
+
   <a class="skip-link" href="#main-content">Skip to main content</a>
 
   <noscript>
@@ -20,16 +20,11 @@
 
   <div class="page">
 
-    <!-- =====================================================
-         PROFILE SIDEBAR
-         On desktop it sits beside the content. On phones and
-         tablets it becomes a compact card, and the details
-         open and close with the toggle button.
-         ===================================================== -->
+  
     <aside class="sidebar" aria-label="Profile">
 
       <div class="sidebar-header">
-        <!-- Profile photo: images/profile.jpg -->
+       
         <img class="avatar" src="images/profile.jpg" width="112" height="112" alt="Photo of Reyansh Singh">
         <div class="identity">
           <h1 class="name">Reyansh Singh</h1>
@@ -87,16 +82,11 @@
       </div>
     </aside>
 
-    <!-- =====================================================
-         MAIN CONTENT: tab bar + five sections
-         Only one .panel is visible at a time (the others have
-         the "hidden" attribute, which also removes them from
-         keyboard tabbing and screen readers).
-         ===================================================== -->
+
     <main class="content" id="main-content">
 
       <nav class="tabs" aria-label="Portfolio sections">
-        <!-- data-tab must match the id of the panel it opens -->
+  
         <button type="button" class="tab-btn is-active" data-tab="about" aria-controls="about" aria-current="page">About</button>
         <button type="button" class="tab-btn" data-tab="resume" aria-controls="resume">Resume</button>
         <button type="button" class="tab-btn" data-tab="projects" aria-controls="projects">Projects</button>
@@ -104,7 +94,7 @@
         <button type="button" class="tab-btn" data-tab="contact" aria-controls="contact">Contact</button>
       </nav>
 
-      <!-- ================= ABOUT ================= -->
+
       <section id="about" class="panel" aria-labelledby="about-title">
         <h2 id="about-title">About me</h2>
 
@@ -169,12 +159,12 @@
         </div>
       </section>
 
-      <!-- ================= RESUME ================= -->
+
       <section id="resume" class="panel" aria-labelledby="resume-title" hidden>
         <h2 id="resume-title">Resume</h2>
 
         <h3>Education</h3>
-        <!-- A timeline makes sense here because education really is a sequence (newest first) -->
+
         <ol class="timeline">
           <li class="timeline-item">
             <h4>B.Tech, Computer Science and Information Technology (CSIT)</h4>
@@ -238,11 +228,11 @@
         </div>
       </section>
 
-      <!-- ================= PROJECTS ================= -->
+
       <section id="projects" class="panel" aria-labelledby="projects-title" hidden>
         <h2 id="projects-title">Projects</h2>
 
-        <!-- Filter buttons. data-filter must match a word in a card's data-category -->
+        
         <div class="filters" role="group" aria-label="Filter projects by category">
           <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true">All</button>
           <button type="button" class="filter-btn" data-filter="frontend" aria-pressed="false">Frontend</button>
@@ -253,8 +243,7 @@
 
         <div class="card-grid card-grid-projects">
 
-          <!-- A card can belong to several categories: separate them with spaces.
-               Each category must be ONE word (use a hyphen, like database-security), never spaces. -->
+     
           <article class="card project-card" data-category="frontend">
             <h4>Personal Portfolio Website</h4>
             <p>A single-page portfolio with tabs, a project filter and a validated contact form.</p>
@@ -308,7 +297,7 @@
         <p id="project-empty" class="muted" hidden>No projects in this category yet.</p>
       </section>
 
-      <!-- ================= ACHIEVEMENTS ================= -->
+
       <section id="achievements" class="panel" aria-labelledby="achievements-title" hidden>
         <h2 id="achievements-title">Achievements</h2>
         <div class="card-grid card-grid-2">
@@ -357,12 +346,11 @@
         </div>
       </section>
 
-      <!-- ================= CONTACT ================= -->
+   
       <section id="contact" class="panel" aria-labelledby="contact-title" hidden>
         <h2 id="contact-title">Contact</h2>
 
-        <!-- "novalidate" turns off the browser's own pop-up messages so our JavaScript can show its own.
-             The rules still come from the HTML attributes: required, type="email" and minlength. -->
+    
         <form id="contact-form" class="card form" novalidate>
 
           <div class="field">
@@ -393,7 +381,7 @@
             <p class="field-error" id="message-error"></p>
           </div>
 
-          <!-- Empty until the form is submitted. role="status" lets screen readers announce it. -->
+     
           <p id="form-status" class="form-status" role="status"></p>
 
           <button type="submit" class="btn btn-primary">Submit form</button>
